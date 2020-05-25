@@ -1,0 +1,86 @@
+@import "./variables.scss";
+
+.logo{
+    position: absolute !important;
+    left: 20px !important;
+    top: 30px !important;
+    width:215px !important;
+    height:29px !important;
+    cursor: pointer;
+}
+  
+.appbar{
+    background-color:$white !important;
+    box-shadow: rgba(0, 0, 0, 0.11) 0px 4px 9px 3px, rgba(0, 0, 0, 0.14) 0px 0px 1px 0px, rgba(0, 0, 0, 0.12) 0px 0px 3px 0px important;
+}
+
+
+.toolbar{
+    min-height:130px !important;
+}
+
+.nav{
+    display: flex; 
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 160%);
+    margin: 0px;
+    padding:0px !important;
+}
+
+.navItem{
+    margin:0px 7px;
+    a{
+        font-size:18px;
+        font-weight: 500;
+    }
+}
+
+.socialIcon{
+    position: absolute;
+    right:20px;
+    top: 20px;
+}
+
+@media  (max-width: 799px) {
+    .toolbar{
+        min-height:160px !important;
+    }
+    .logo{
+        transform: translateX(-50%);
+        left: 50% !important;
+    }
+    .socialIcon{
+        position: absolute;
+        top: 65px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .nav{
+      width:100% ;
+      overflow-x: scroll;
+      padding: 0px 10px !important;
+    }
+          /* width */
+        .nav::-webkit-scrollbar {
+            height: 2px;
+        }
+        
+        /* Track */
+        .nav::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px grey;
+            border-radius: 10px;
+        }
+        
+        /* Handle */
+        .nav::-webkit-scrollbar-thumb {
+            background: lighten($black,  60);
+            border-radius: 10px;
+        }
+    .navItem{
+        margin:0px 8px;
+        display: inline-block;
+    }
+    
+}

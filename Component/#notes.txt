@@ -1,0 +1,15 @@
+#Note
+1. Add labirary react menu
+2. grplql
+3. next.js for svg
+
+npm i next-react-svg 
+graphql
+npm i graphql-tag
+npm i apollo-boost
+npm i apollo-cache-inmemory
+
+graphql graphql-tag apollo-boost apollo-cache-inmemory appollo-link-http react-apollo
+
+https://blog.rajdeepsingh.dev/graphql
+

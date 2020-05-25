@@ -1,0 +1,12 @@
+@import "./variables.scss";
+
+.menu{
+    background-color: transparent !important;
+    // width:100px;
+}
+
+.buttonMenu{
+    background-color: $white !important;
+    box-shadow: none !important;
+    border: none !important;
+}

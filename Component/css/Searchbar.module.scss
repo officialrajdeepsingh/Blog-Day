@@ -1,0 +1,59 @@
+@import "./variables.scss";
+
+
+.bar{
+    display: block;
+    width: 300px;
+    background-color: $white;
+    color:darken($black, 30);
+    right: 40px;
+    position: absolute;
+    top: 70px;
+    height: 70%;
+    overflow-x: scroll;
+}
+  /* width */
+  .bar::-webkit-scrollbar {
+    height: 2px;
+    width:7px;
+}
+
+/* Track */
+.bar::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+    background: transparent !important;
+
+}
+
+/* Handle */
+.bar::-webkit-scrollbar-thumb {
+    background: $black;
+    border-radius: 220px;
+}
+
+
+.box{
+    margin:10px 0px !important;
+}
+.formRoot{
+    padding:12px 0px;
+    width:100% !important;
+}
+.rootText{
+    width:100% !important;
+
+}
+
+.rootList{
+    width:100% !important;
+}
+
+@media  (max-width: 799px) {
+    .bar{
+        position: absolute;
+        top: 110px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}

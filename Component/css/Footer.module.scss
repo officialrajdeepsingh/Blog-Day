@@ -1,0 +1,58 @@
+@import "./variables.scss";
+
+.logo{
+    width:215px !important;
+    height:29px !important;
+    cursor: pointer;
+}
+  
+.appbar{
+    background-color:$white !important;
+    box-shadow: 0px 2px 5px 3px rgba(207, 207, 207, 0.438) important;
+}
+
+
+.toolbar{
+    min-height:130px !important;
+    justify-content: space-between !important;
+}
+
+.nav{
+    display: flex; 
+    margin: 0px;
+    padding:0p;
+}
+
+.navItem{
+    margin:0px 7px;
+}
+
+.socialIcon{
+    color: lighten($black, 10) !important;
+}
+.toolbarCopyright{
+    justify-content: space-between !important;
+}
+
+.copyright{
+    color: lighten($black, 10) !important;
+    font-size: 17px !important;
+    text-transform: capitalize;
+    font-weight:300;
+}
+
+@media  (max-width: 799px) {
+    
+    .toolbar{
+        flex-direction: column;
+        padding: 20px 0px !important;
+    }
+    .nav{
+        justify-content: flex-start;
+    }
+    .toolbarCopyright{
+        flex-direction: column;
+        margin-bottom: 50px;
+    }
+  
+}

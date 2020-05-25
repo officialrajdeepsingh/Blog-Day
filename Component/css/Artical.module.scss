@@ -1,0 +1,54 @@
+@import "./variables.scss";
+
+
+.card{
+    margin:10px;
+    padding:10px;
+}
+
+.image{
+    width:100px;
+    height: 250px;
+}
+
+.grid{
+    margin:20px 0px ;
+}
+
+.views{
+    display: flex;
+    
+    .iconEyes{
+        color: lighten($black, 20);
+    
+    }
+   
+    h3{
+        padding: 0px 10px;
+        margin: 0px;
+        font-size: 20px;
+        color: lighten($black, 40);
+        font-weight: lighter;
+    }
+}
+
+.block{
+    display: block;
+    position: absolute;
+    height: 200px;
+    z-index: 9999 !important;
+    top: 10px;
+}
+
+.shareBox{
+    // top: 68% !important;
+    // left: 500px !important;
+    background-color: green;
+    // position: absolute !important;
+}
+
+
+.icondots{
+    color: lighten($black, 20);
+
+}
