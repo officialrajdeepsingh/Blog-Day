@@ -8,13 +8,40 @@ import {
   bindMenu,
 } from 'material-ui-popup-state/hooks';
 import SvgIcon from '@material-ui/core/SvgIcon';
+import copy from 'clipboard-copy';
 
 import style from '../css/Menu.module.scss';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+
+// import Link from 'next/link';
+import Link from '@material-ui/core/Link';
 
 
 
-const TriggerMenu = () => {
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
+
+const TriggerMenu = (props) => {
   const popupState = usePopupState({ variant: 'popover', popupId: 'demoMenu' })
+  
+  const [open, setOpen] = React.useState(false);
+  
+  const handleClick = ({close}) => {
+      copy(`${props.slug}`)
+       setOpen(true)
+       close()
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
+  
   return (
     <div>
       <Button variant="contained" className={style.buttonMenu} {...bindTrigger(popupState)}>
@@ -36,18 +63,45 @@ const TriggerMenu = () => {
             </SvgIcon>
       </Button>
       <Menu
-        {...bindMenu(popupState)}
-        getContentAnchorEl={null}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
-        transformOrigin={{ vertical: 'top', horizontal: 'left' }}
-        className={style.menu}
+          {...bindMenu(popupState)}
+          getContentAnchorEl={null}
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
+          transformOrigin={{ vertical: 'top', horizontal: 'left' }}
+          className={style.menu}
       >
-        <MenuItem onClick={popupState.close}>Share</MenuItem>
-        <MenuItem onClick={popupState.close}>About</MenuItem>
-        <MenuItem onClick={popupState.close}>Feedback</MenuItem>
+        <MenuItem onClick={()=>handleClick(popupState)} > 
+         
+            Share
+        </MenuItem>
+         
+       
+        <MenuItem >   
+          <Link className={style.anchorLink} href={`/comment?id=${props.postId}`} as='/comment'>
+            Write Comment 
+          </Link>  
+        </MenuItem>
+        
+        <MenuItem >  
+          <Link rel="noreferrer" target="_blank" className={style.anchorLink} href="https://docs.google.com/forms/d/e/1FAIpQLSdtJKTuJ3t_mjbkm0VKBFKyvLe_Kvho5oeKyLI0DT9_ujRPxA/viewform?usp=sf_link" > 
+             Report 
+          </Link> 
+        </MenuItem>
+     
       </Menu>
+    
+        <Snackbar open={open} anchorOrigin={ 
+              {    vertical: 'top', 
+                  horizontal: 'center' }
+              } 
+              autoHideDuration={6000} onClose={handleClose}>
+                <Alert onClose={handleClose} severity="success">
+                  You success the copy url and Now Share with your friend!
+                </Alert>
+            </Snackbar>
     </div>
   )
 }
+
+
 
 export default TriggerMenu

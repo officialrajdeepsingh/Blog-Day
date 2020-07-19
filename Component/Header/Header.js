@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import AppBar from '@material-ui/core/AppBar';
+import Container from '@material-ui/core/Container';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
@@ -10,27 +11,78 @@ import SvgIcon from '@material-ui/core/SvgIcon';
 import Modal from '@material-ui/core/Modal';
 import Searchbar from './Searchbar'
 
+import TextField from '@material-ui/core/TextField';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import Divider from '@material-ui/core/Divider';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import Avatar from '@material-ui/core/Avatar';
+import { useQuery } from '@apollo/react-hooks';
+import {POST_HEADER} from "../graphalQurey"
+import GraphqlConfig from "../graphalQurey"
+import useSWR from 'swr'
 
+import {client} from "../apollo-client";
 
 import style from '../css/Header.module.scss';
 import Link from 'next/link';
+import { request } from 'graphql-request'
 
+import gql from 'graphql-tag';
 
+const fetcher = query => request('https://www.rajdeepsingh.dev/graphql', query)
 
-export default class Header extends Component {
-    state={
-        open:false
+export default function Header(props) {
+
+    const { data, error } = useSWR(
+        `{
+           
+               menu(id:"TWVudToz") {
+                  id
+                  name
+                  slug
+                   menuItems {
+                      nodes {
+                        label
+                        menuItemId
+                        id
+                        url
+                        connectedObject {
+                          __typename
+                          ... on Page {
+                            id
+                            title
+                            slug
+                          }
+                          ... on Post {
+                            id
+                            title
+                          }
+                        }
+                      }
+                    }
+                }
+        }`,
+        fetcher
+      )
+    
+
+ 
+    const [open , setOpen]=useState(false)
+
+    const handleOpen=()=>{
+    
+        setOpen(!open)
     }
-
-    handleOpen=()=>{
-        this.setState({open:!this.state.open})
+    const handleClose=()=>{
+        setOpen(false)
     }
-    handleClose=()=>{
-       this.setState({open:false})
+    
 
-    }
-    render() {
-        return (
+  
+    return (
+        <>
             <AppBar className={style.appbar} position="static">
                 <Toolbar className={style.toolbar}>
 
@@ -42,53 +94,50 @@ export default class Header extends Component {
                     </Link>
 
                     <div className={style.socialIcon}>
-                        <IconButton  onClick={this.handleOpen} aria-label="search">
-                            <SearchIcon style={{ color: 'black' }} />
-                        </IconButton>                
-                                <Modal
-                                    open={this.state.open}
-                                    onClose={this.handleClose}
-                                    aria-labelledby="simple-modal-title"                            
-                                   
- 
-                                    aria-describedby="simple-modal-description"
-                                >
-                                <Searchbar/>
-                                </Modal>
 
-                        <IconButton aria-label="Facebook" >
+                        <IconButton  onClick={handleOpen} aria-label="search">
+                            <SearchIcon style={{ color: 'black' }} />
+                        </IconButton>    
+            
+                            
+                                
+
+                        <IconButton target="_blank" href='https://www.facebook.com/officialrajdeepsingh/' aria-label="Facebook" >
                             <FacebookIcon style={{ color: 'black' }}/>
                         </IconButton>
-                        <IconButton aria-label="Twitter">
+                        <IconButton target="_blank" href='https://twitter.com/Official_R_deep' aria-label="Twitter">
                             <TwitterIcon style={{ color: 'black' }} />
                         </IconButton>
                     </div>
 
-                    <ul className={style.nav}>
-                        <li className={style.navItem}>
-                            <Link href="/">
-                                <a>Home</a>
-                            </Link>
-                        </li>
-                        <li className={style.navItem}>
-                            <Link href="/product">
-                                <a>Product</a>
-                            </Link>
-                        </li>
-                        <li className={style.navItem} >
-                            <Link href="/about">
-                                <a>About</a>
-                            </Link>
-                        </li>
-                        <li className={style.navItem} >
-                            <Link href="/contact">
-                                <a>Contact</a>
-                            </Link>
-                        </li>
-                    </ul>
-                </Toolbar>
-            </AppBar>
 
-        )
-    }
+                    <ul className={style.nav}>          
+                        {
+                            (data)? data.menu.menuItems.nodes.map(
+                                menu=>{
+                                    const slug=menu.connectedObject.slug
+                                    const id =menu.connectedObject.id
+                                    return (
+                                        <li key={menu.id} className={style.navItem}>
+                                            <Link  href={(slug && id )?`/page/${slug}-${id}` :"/" }>
+                                                <a title={(menu.connectedObject.title)?menu.connectedObject.title : data.label }>{menu.label}</a>
+                                            </Link>
+                                        </li>      
+                                    )
+                                }
+                            ) : ""
+                        } 
+                    </ul>
+               
+                </Toolbar>
+            </AppBar>        
+            { 
+                    open? <Searchbar /> : ''
+            }
+        </>
+    )
 }
+
+
+
+

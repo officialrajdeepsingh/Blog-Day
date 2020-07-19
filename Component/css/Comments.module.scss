@@ -1,0 +1,131 @@
+@import "./variables.scss";
+
+
+.root{
+    margin:25px auto !important;
+    
+}
+.cardInner{
+    background-color: $white;
+    padding:5px !important;
+    margin:5px 0px !important;
+}
+.heading{
+    text-align:center;
+}
+
+.cardBox{
+    display:flex;
+    flex-direction:row !important;
+    box-shadow:0px 0px 5px 5px rgba(0, 0, 0, 0.12) !important;
+    border:none !important;
+    border-radius:0px !important ;
+    justify-items: center;
+    padding: 10px !important;
+    width:max-content !important;
+    margin:25px;
+}
+.imageSize{
+    width:50px !important;
+    height:50px !important;
+}
+.cardBoxTitle{
+    margin: 10px !important;
+}
+.form{
+    background-color: $white;
+    padding:5px !important;
+    margin:15px 0px !important;
+}
+.textControl{
+    padding:20px !important;
+}
+.productButton{
+    background-color: lighten($black, 10) !important;
+    padding: 12px !important;
+    color: $white !important;
+    margin:15px !important;
+    border-radius: 0px !important;
+    width: 100px;
+}
+.textFields{
+    margin:15px auto !important;
+        
+        label{
+            font-size:30px !important;
+            color:$black !important;
+        }
+        div{
+            margin-top:28px !important;
+            input{
+                font-size:22px !important;
+                border:2px solid $black !important;
+                padding:3px;
+                background-color: #80808040;
+                color: black;
+                transition: all  2ms cubic-bezier(0.0, 0, 0.2, 1);
+
+                &:hover{
+                    border:none !important;
+
+                }
+            }
+        }
+}
+.cardCommentsReplyBox{
+    margin: 40px auto !important;
+    padding: 22px !important;
+    width: 70% !important;
+    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.12) !important;
+    border: none !important;
+    border-radius: 10px !important;
+}
+.cardCommentsBox{
+    margin: 40px auto !important;
+    padding: 20px !important;
+    width: 80% !important;
+    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.12) !important;
+    border: none !important;
+    border-radius: 10px !important;
+}
+.typeH3 ,.typeH5{
+    margin-bottom:7px !important;
+    font-size:1.5rem !important
+}
+.cardCommentBox{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around !important;
+    width: 60%;
+    margin: 15px auto;
+}
+
+.editorStyle{
+    background-color: $white !important;
+    margin: 1.3rem 0px ;
+}
+
+.commentLogin{
+    background-color:lighten($black, 30);
+    width:100%;
+    height: 100px ;
+   
+    a {
+        color:$white
+    }
+}
+ @media  (max-width: 450px) {
+     .cardCommentBox{
+         width:100% !important;
+     }
+        .cardBox{
+            flex-direction:column !important;
+            padding: 10px auto;
+            margin: 10px auto;
+            width: 100% !important;
+            
+        }
+        .imageSize{
+            margin:5px auto !important ;
+        }
+ }

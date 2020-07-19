@@ -1,15 +1,69 @@
-#Note
-1. Add labirary react menu
-2. grplql
-3. next.js for svg
+registerUser:
+clientMutationId: "registerUser"
+user:
+email: "deep509@gmail.com"
+id: "dXNlcjoxNA=="
+jwtAuthToken: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvd3d3LnJhamRlZXBzaW5naC5kZXYiLCJpYXQiOjE1OTQ3MDk0ODMsIm5iZiI6MTU5NDcwOTQ4MywiZXhwIjoxNTk0NzA5NzgzLCJkYXRhIjp7InVzZXIiOnsiaWQiOiIxNCJ9fX0.zWA8KTVrNrXAaDcwF_LW9cvvNvar00a0sPkUKv2mL2o"
+userId: 14
+username: "deep509"
 
-npm i next-react-svg 
-graphql
-npm i graphql-tag
-npm i apollo-boost
-npm i apollo-cache-inmemory
 
-graphql graphql-tag apollo-boost apollo-cache-inmemory appollo-link-http react-apollo
+error: Error: &lt;strong&gt;Error&lt;/strong&gt;: This username is already registered. Please choose another one.: {"response":{"errors":[{"message":"&lt;strong&gt;Error&lt;/strong&gt;: This username is already registered. Please choose another one.","category":"user","locations":[{"line":2,"column":3}],"path":["registerUser"]}],"data":{"registerUser":null},"status":200},"request":{"query":"mutation MyMutation($userData: RegisterUserInput!) {\n registerUser(input: $userData) {\n clientMutationId\n user {\n email\n id\n jwtAuthToken\n userId\n username\n }\n }\n}","variables":{"userData":{"username":"test@","email":"test@gmail.com","password":"test@","displayName":"test@","clientMutationId":"registerUser","registered":"true"}}}} at GraphQLClient.<anonymous> (http://localhost:4000/_next/static/development/pages/_app.js?ts=1594710921808:26327:35) at step (http://localhost:4000/_next/static/development/pages/_app.js?ts=1594710921808:26252:23) at Object.next (http://localhost:4000/_next/static/development/pages/_app.js?ts=1594710921808:26233:53) at fulfilled (http://localhost:4000/_next/static/development/pages/_app.js?ts=1594710921808:26224:58)
+request: {query: "mutation MyMutation($userData: RegisterUserInput!)…AuthToken↵      userId↵      username↵    }↵  }↵}", variables: {…}}
+response:
+data: {registerUser: null}
+errors: Array(1)
+0: {message: "&lt;strong&gt;Error&lt;/strong&gt;: This username is already registered. Please choose another one.", category: "user", locations: Array(1), path: Array(1)}
+length: 1
+__proto__: Array(0)
+status: 200
+__proto__: Object
+message: "&lt;strong&gt;Error&lt;/strong&gt;: This username is already registered. Please choose another one.: {"response":{"errors":[{"message":"&lt;strong&gt;Error&lt;/strong&gt;: This username is already registered. Please choose another one.","category":"user","locations":[{"line":2,"column":3}],"path":["registerUser"]}],"data":{"registerUser":null},"status":200},"request":{"query":"mutation MyMutation($userData: RegisterUserInput!) {\n  registerUser(input: $userData) {\n    clientMutationId\n    user {\n      email\n      id\n      jwtAuthToken\n      userId\n      username\n    }\n  }\n}","variables":{"userData":{"username":"test@","email":"test@gmail.com","password":"test@","displayName":"test@","clientMutationId":"registerUser","registered":"true"}}}}"
+stack: "Error: &lt;strong&gt;Error&lt;/strong&gt;: This username is already registered. Please choose another one.: {"response":{"errors":[{"message":"&lt;strong&gt;Error&lt;/strong&gt;: This username is already registered. Please choose another one.","category":"user","locations":[{"line":2,"column":3}],"path":["registerUser"]}],"data":{"registerUser":null},"status":200},"request":{"query":"mutation MyMutation($userData: RegisterUserInput!) {\n  registerUser(input: $userData) {\n    clientMutationId\n    user {\n      email\n      id\n      jwtAuthToken\n      userId\n      username\n    }\n  }\n}","variables":{"userData":{"username":"test@","email":"test@gmail.com","password":"test@","displayName":"test@","clientMutationId":"registerUser","registered":"true"}}}}↵    at GraphQLClient.<anonymous> (http://localhost:4000/_next/static/development/pages/_app.js?ts=1594710921808:26327:35)↵    at step (http://localhost:4000/_next/static/development/pages/_app.js?ts=1594710921808:26252:23)↵    at Object.next (http://localhost:4000/_next/static/development/pages/_app.js?ts=1594710921808:26233:53)↵    at fulfilled (http://localhost:4000/_next/static/development/pages/_app.js?ts=1594710921808:26224:58)"
+__proto__: Error
 
-https://blog.rajdeepsingh.dev/graphql
 
+response:
+data: {registerUser: null}
+errors: [{…}]
+
+
+
+
+
+
+data:
+createComment:
+clientMutationId: "createComment"
+success: true
+
+hey, WordPress is best my opinion.use WordPress and secondly create a publication medium for spreading your article worldwide.also medium free for you
+
+
+
+data: {createComment: {success: true, clientMutationId: "createComment"}}
+createComment: {success: true, clientMutationId: "createComment"}
+clientMutationId: "createComment"
+success: true
+
+
+
+
+
+
+
+error: Error: Duplicate comment detected; it looks as though you&#8217;ve already said that!: {"response":{"errors":[{"message":"Duplicate comment detected; it looks as though you&#8217;ve already said that!","category":"user","locations":[{"line":3,"column":5}],"path":["createComment"]}],"data":{"createComment":null},"status":200},"request":{"query":"\nmutation CREATE_COMMENT($input: CreateCommentInput!) {\n createComment(input: $input ) {\n success\n clientMutationId\n }\n}\n","variables":{"input":{"content":"hey, WordPress is best my opinion.use WordPress and secondly create a publication medium for spreading your article worldwide.also medium free for you","author":"LiveLove","userId":"12","clientMutationId":"createComment","commentOn":178}}}} at GraphQLClient.<anonymous> (http://localhost:4000/_next/static/development/pages/Comment/%5BComment%5D.js?ts=1594721461018:18441:35) at step (http://localhost:4000/_next/static/development/pages/Comment/%5BComment%5D.js?ts=1594721461018:18366:23) at Object.next (http://localhost:4000/_next/static/development/pages/Comment/%5BComment%5D.js?ts=1594721461018:18347:53) at fulfilled (http://localhost:4000/_next/static/development/pages/Comment/%5BComment%5D.js?ts=1594721461018:18338:58)
+request: {query: "↵mutation CREATE_COMMENT($input: CreateCommentInpu…        success↵        clientMutationId↵    }↵}↵", variables: {…}}
+response:
+data: {createComment: null}
+errors: Array(1)
+0:
+category: "user"
+locations: [{…}]
+message: "Duplicate comment detected; it looks as though you&#8217;ve already said that!"
+path: ["createComment"]
+__proto__: Object
+length: 1
+__proto__: Array(0)
+status: 200
+__proto__: Object

@@ -1,0 +1,139 @@
+@import "./variables.scss";
+
+.outerCard{
+    margin:30px 0px;
+    background-color: $white;
+    padding:30px 40px;
+}
+
+
+.cardBox{
+    display: flex;
+    flex-direction: row;
+    margin:35px 10px !important;
+}
+
+.cardBoxAuthorTitle{
+    margin:5px !important;
+}
+.cardArticalImage{
+    height:600px !important;
+}
+
+.dateShow{
+    margin:30px 10px !important;
+    font-size: 2.2rem !important;
+}
+
+
+
+.paragrafBox{
+    margin:10px 10px !important;
+    color:lighten($black, 5) !important;
+    font-size: 1.2rem;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 300; 
+    line-height: 1.6;
+    letter-spacing: 0.0075em;
+}
+
+.writeComment{
+    margin: 50px auto !important;
+    border: 2px solid lighten($black, 25);
+    height: 25px;
+    padding: 15px;
+    width: 180px !important;
+    text-align: center;
+}
+.MoreStory{
+    margin:20px 15px !important;
+    text-transform: capitalize !important;
+}
+
+
+
+.grid{
+    margin:40px  auto 60px auto !important 
+}
+
+.cardMore{
+    margin:10px 10px 50px 10px  !important;
+    box-shadow:0px 0px 5px 5px rgba(0, 0, 0, 0.12) !important;
+    padding:12px !important;
+    border-radius:2px !important;
+}
+
+.imageCardMore{
+    height:300px !important;
+}
+
+
+.innerHtmlFor{
+    margin:10px auto;
+    overflow-x: hidden;
+    box-sizing: border-box;
+
+    iframe{
+        position: relative !important;
+        width:100%;
+    }
+
+
+    p{
+        margin: 10px 20px !important;
+        color: $black !important;
+        font-size: 1.3rem;
+        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+        font-weight: 500 !important;
+        line-height: 1.6;
+        letter-spacing: 0.009em;
+        word-break: break-word;
+    }
+
+    h1, h2 , h3 , h4, h5, h6, span{
+        line-height: 1.6;
+        letter-spacing: 0.009em;
+        word-break: break-word;
+        margin: 10px 20px !important;
+        color: $black !important;
+        padding: 10px 8px !important;
+    }
+
+    h3{
+        font-size: 90px !important;
+        font-weight: 700 !important;
+    }
+    h1{
+        font-size: 60px !important;
+        padding: 0px !important;
+        font-weight: 700 !important;
+        line-height: 1;
+        margin: 20px 20px !important;
+    }
+    pre {
+        margin: 10px;
+        border: 2px solid;
+        padding: 25px;
+        background-color: #000000cf;
+        color: white;
+        line-height: 2.3;
+    }
+}
+
+@media (max-width: 450px) {
+  
+    .innerHtmlFor{
+        h1{
+            font-size:40px !important;
+            font-weight:300 !important;
+            margin: 40px 0px !important
+        }
+    }
+    .cardArticalImage{
+        height:300px !important;
+    }
+
+    
+
+
+}

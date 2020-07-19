@@ -8,7 +8,7 @@ export default class Layout extends Component {
     render() {
         return (
             <>
-               <Header />
+               <Header  />
                 {this.props.children}
                 <Footer />
             </>

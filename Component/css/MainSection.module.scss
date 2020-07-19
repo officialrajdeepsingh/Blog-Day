@@ -44,6 +44,9 @@
     border:none !important;
     color:$white !important;
     border-radius: 0px !important;
+    font-size: 17px!important;
+       
+   
 }
 
 .iconBar{
@@ -52,9 +55,7 @@
     left: 10px !important;
 }
 
-// xs, sm, md, lg, and xl
 
-// 1024
 @media  (max-width: 799px) {
     .root{
         height: 100% !important;
@@ -83,6 +84,7 @@
     .productButton{
         height:38px !important;
         margin-bottom:10px !important;
+
     }
 
     .iconBar{

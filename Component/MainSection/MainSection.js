@@ -14,7 +14,14 @@ import InstagramIcon from '@material-ui/icons/Instagram';
 
 import style from "../css/MainSection.module.scss";
 
+import Link from 'next/link';
+import gql from 'graphql-tag';
+import {client} from "../apollo-client";
+
+
 export default class MainSection extends Component {
+
+    
    
     constructor(props) {
         super(props);
@@ -37,51 +44,60 @@ export default class MainSection extends Component {
       
     
     render() {
-        
+        const {post}=this.props;     
+        const {node}=post  
+             
         return (
                      
                  <Container  style={( this.state.height <= 799)? { height:'100%' , position: 'relative',backgroundColor:'white', margin:"30px 0px", boxShadow:'0px 4px 9px 3px rgba(0, 0, 0, 0.11), 0px 0px 1px 0px rgba(0,0,0,0.14), 0px 0px 3px 0px rgba(0,0,0,0.12)'} : { height:`${this.state.height}px` , position: 'relative',backgroundColor:'white', margin:"30px 0px", boxShadow:'0px 4px 9px 3px rgba(0, 0, 0, 0.11), 0px 0px 1px 0px rgba(0,0,0,0.14), 0px 0px 3px 0px rgba(0,0,0,0.12)'} } > 
 
                     <Card className={style.root}>
-                        <div className={style.innerCard}>
+                     <div className={style.innerCard}>
                             <div className={style.details}>
                                 <CardContent className={style.cardContentInner}>
-                                    <Typography component="h6" variant="h6">
-                                        Bootstrap
-                                    </Typography>
+                                    {
+                                        node.categories.nodes.map(
+                                            (postCat)=>  <Typography key={postCat.id} component="h6" variant="h6">
+                                            # {postCat.name} 
+                                             </Typography>
+                                        )
+                                       
+                                    }
                                     <Typography component="h4" variant="h4">
-                                        Live From Space
+                                    {node.title}
                                     </Typography>
-                                    <Typography variant="subtitle1" color="textSecondary">
-                                    Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                                        across all continents except Antarctica
+                                    <Typography variant="subtitle1" color="textSecondary" dangerouslySetInnerHTML={{ __html: node.excerpt }}>
+                                       
                                     </Typography>
                                 </CardContent>
                                 <CardActions className={style.cardAction}>
-                                    <Button className={style.productButton} size="small">
-                                        Read More
-                                    </Button>
+                                    <Link  href={`/[read]?slug=${node.id}-${node.slug}-${node.id}`} as={ `${node.slug}-${node.id}`}>
+                                       <a className={`MuiButtonBase-root MuiButton-root MuiButton-text  MuiButton-textSizeSmall MuiButton-sizeSmall ${style.productButton}`}> Read More </a> 
+                                    </Link>
+                                    
+                                    
                                 </CardActions>
                             </div>
                             <CardMedia
+                                className={style.image}
                                 component="img"
-                                alt="Contemplative Reptile"
-                                image='https://source.unsplash.com/random'
-                                title="Live from space album cover"
-                                className={style.cardImage}
+                                alt={node.featuredImage.altText}
+                                image={node.featuredImage.sourceUrl}
+                                title={node.featuredImage.altText}
                             />
 
-                        </div>
+                        </div> 
+
                     </Card>
 
                     <div className={style.iconBar}>
-                        <IconButton aria-label="Facebook" >
+                        <IconButton  target="_blank" href='https://www.facebook.com/officialrajdeepsingh/' aria-label="Facebook" >
                                 <FacebookIcon style={{ color: 'black' }}/>
                             </IconButton>
-                        <IconButton aria-label="Twitter">
+                        <IconButton  target="_blank" href='https://twitter.com/Official_R_deep' aria-label="Twitter">
                                 <TwitterIcon style={{ color: 'black' }} />
                         </IconButton>
-                        <IconButton aria-label="Instagram">
+                        <IconButton target="_blank" href='https://www.instagram.com/officialrajdeepsinghs/' aria-label="Instagram">
                                 <InstagramIcon style={{ color: 'black' }} />
                         </IconButton>
                     </div>

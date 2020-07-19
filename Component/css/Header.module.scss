@@ -42,6 +42,9 @@
     right:20px;
     top: 20px;
 }
+.serachBarDiv{
+    color: blue($color: #000000);
+}
 
 @media  (max-width: 799px) {
     .toolbar{

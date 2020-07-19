@@ -9,8 +9,13 @@
     right: 40px;
     position: absolute;
     top: 70px;
-    height: 70%;
     overflow-x: scroll;
+    min-height: min-content;
+    max-height: fit-content;
+    height: fit-content;
+    overflow-x: scroll;
+    max-height: 70% !important;
+    z-index: 1500;
 }
   /* width */
   .bar::-webkit-scrollbar {

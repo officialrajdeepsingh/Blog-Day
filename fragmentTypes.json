@@ -1,0 +1,339 @@
+{
+  "__schema": {
+    "types": [
+      {
+        "kind": "INTERFACE",
+        "name": "Node",
+        "possibleTypes": [
+          {
+            "name": "Category"
+          },
+          {
+            "name": "Post"
+          },
+          {
+            "name": "User"
+          },
+          {
+            "name": "Comment"
+          },
+          {
+            "name": "CommentAuthor"
+          },
+          {
+            "name": "Page"
+          },
+          {
+            "name": "MediaItem"
+          },
+          {
+            "name": "ContentType"
+          },
+          {
+            "name": "Taxonomy"
+          },
+          {
+            "name": "UserRole"
+          },
+          {
+            "name": "PostFormat"
+          },
+          {
+            "name": "Tag"
+          },
+          {
+            "name": "Menu"
+          },
+          {
+            "name": "MenuItem"
+          },
+          {
+            "name": "Plugin"
+          },
+          {
+            "name": "Theme"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "TermNode",
+        "possibleTypes": [
+          {
+            "name": "Category"
+          },
+          {
+            "name": "PostFormat"
+          },
+          {
+            "name": "Tag"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "UniformResourceIdentifiable",
+        "possibleTypes": [
+          {
+            "name": "Category"
+          },
+          {
+            "name": "Post"
+          },
+          {
+            "name": "User"
+          },
+          {
+            "name": "Page"
+          },
+          {
+            "name": "MediaItem"
+          },
+          {
+            "name": "PostFormat"
+          },
+          {
+            "name": "Tag"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "ContentNode",
+        "possibleTypes": [
+          {
+            "name": "Post"
+          },
+          {
+            "name": "Page"
+          },
+          {
+            "name": "MediaItem"
+          }
+        ]
+      },
+      {
+        "kind": "UNION",
+        "name": "CommentAuthorUnion",
+        "possibleTypes": [
+          {
+            "name": "User"
+          },
+          {
+            "name": "CommentAuthor"
+          }
+        ]
+      },
+      {
+        "kind": "UNION",
+        "name": "PostObjectUnion",
+        "possibleTypes": [
+          {
+            "name": "Post"
+          },
+          {
+            "name": "Page"
+          },
+          {
+            "name": "MediaItem"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "NodeWithTitle",
+        "possibleTypes": [
+          {
+            "name": "Post"
+          },
+          {
+            "name": "Page"
+          },
+          {
+            "name": "MediaItem"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "NodeWithContentEditor",
+        "possibleTypes": [
+          {
+            "name": "Post"
+          },
+          {
+            "name": "Page"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "NodeWithAuthor",
+        "possibleTypes": [
+          {
+            "name": "Post"
+          },
+          {
+            "name": "Page"
+          },
+          {
+            "name": "MediaItem"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "NodeWithFeaturedImage",
+        "possibleTypes": [
+          {
+            "name": "Post"
+          },
+          {
+            "name": "Page"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "NodeWithComments",
+        "possibleTypes": [
+          {
+            "name": "Post"
+          },
+          {
+            "name": "Page"
+          },
+          {
+            "name": "MediaItem"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "HierarchicalContentNode",
+        "possibleTypes": [
+          {
+            "name": "Page"
+          },
+          {
+            "name": "MediaItem"
+          }
+        ]
+      },
+      {
+        "kind": "UNION",
+        "name": "ContentTemplateUnion",
+        "possibleTypes": [
+          {
+            "name": "DefaultTemplate"
+          },
+          {
+            "name": "BlogPageTemplate"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "ContentTemplate",
+        "possibleTypes": [
+          {
+            "name": "DefaultTemplate"
+          },
+          {
+            "name": "BlogPageTemplate"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "NodeWithRevisions",
+        "possibleTypes": [
+          {
+            "name": "Post"
+          },
+          {
+            "name": "Page"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "NodeWithPageAttributes",
+        "possibleTypes": [
+          {
+            "name": "Page"
+          }
+        ]
+      },
+      {
+        "kind": "UNION",
+        "name": "ContentRevisionUnion",
+        "possibleTypes": [
+          {
+            "name": "Post"
+          },
+          {
+            "name": "Page"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "NodeWithExcerpt",
+        "possibleTypes": [
+          {
+            "name": "Post"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "NodeWithTrackbacks",
+        "possibleTypes": [
+          {
+            "name": "Post"
+          }
+        ]
+      },
+      {
+        "kind": "UNION",
+        "name": "TermObjectUnion",
+        "possibleTypes": [
+          {
+            "name": "Category"
+          },
+          {
+            "name": "Tag"
+          },
+          {
+            "name": "PostFormat"
+          }
+        ]
+      },
+      {
+        "kind": "UNION",
+        "name": "MenuItemObjectUnion",
+        "possibleTypes": [
+          {
+            "name": "Post"
+          },
+          {
+            "name": "Page"
+          },
+          {
+            "name": "Category"
+          },
+          {
+            "name": "Tag"
+          },
+          {
+            "name": "PostFormat"
+          },
+          {
+            "name": "MenuItem"
+          }
+        ]
+      }
+    ]
+  }
+}
