@@ -23,6 +23,7 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Link from 'next/link'
+import { NextSeo } from 'next-seo';
 
 
 import style from '../Component/css/Signup.module.scss'
@@ -131,13 +132,17 @@ export default function Signup(props) {
           const handleClose = () => {      
             setOpen(false);
          };
-         
-         console.log(getSubmitData, ' submit data ')
+      
 
          const ShowAlertError= (getSubmitData.error)? getSubmitData.error.response.errors[0].message:'submit'
 
         return (
             <>
+            
+                  <NextSeo
+                    title="Signup -- Learn With me "
+                    description="Signup page "
+                />
                 <Container className={style.containerBox}>
                     <Card className={style.root} >
                         <div className={style.innerCard}>
@@ -153,11 +158,11 @@ export default function Signup(props) {
                                            //  on Submit handler  
                                         onSubmit={submitFormUser}
                                         className={style.form}
-                                        noValidate autoComplete="off"
+                                        noValidate autoComplete="on"
                                       >
-                                        <TextField onChange={(e)=>setDisplayName(e.target.value)} id="fullName" className={style.textControl} placeholder=' Exmple:Rajdeep Singh  ' label="Full Name" />
-                                        <TextField onChange={(e)=>setuserName(e.target.value)}  id="userName" className={style.textControl} placeholder=' Exmple:Officialrajdeepsingh  ' label="User Name" />
-                                        <TextField onChange={(e)=>setgmail(e.target.value)}  id="userGmail" className={style.textControl} placeholder=' 123@gmail.com  ' label="Gmail" />
+                                        <TextField autoComplete="name" onChange={(e)=>setDisplayName(e.target.value)} id="fullName" className={style.textControl} placeholder=' Exmple:Rajdeep Singh  ' label="Full Name" />
+                                        <TextField autoComplete="username" onChange={(e)=>setuserName(e.target.value)}  id="userName" className={style.textControl} placeholder=' Exmple:Officialrajdeepsingh  ' label="User Name" />
+                                        <TextField autoComplete="email" onChange={(e)=>setgmail(e.target.value)}  id="userGmail" className={style.textControl} placeholder=' 123@gmail.com  ' label="Gmail" />
 
                                         <FormControl className={style.textControl} >
                                             <InputLabel htmlFor="password">Password</InputLabel>
@@ -167,6 +172,7 @@ export default function Signup(props) {
                                                 value={passward}
                                                 onChange={handleChange}
                                                 placeholder='Exmple: Rb@1%2^3*56'
+                                                autoComplete="new-password"
                                                 endAdornment={
                                                     <InputAdornment position="end">
                                                         <IconButton
@@ -190,6 +196,7 @@ export default function Signup(props) {
                                                 onChange={confirmHandleChange}
                                                 error={matchPassward}
                                                 paceholder='Exmple Confirm Passward :  Rb@1%2^3*56'
+                                                autoComplete="new-password"
                                                 endAdornment={
                                                     <InputAdornment position="end">
                                                         <IconButton

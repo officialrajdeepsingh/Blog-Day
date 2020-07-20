@@ -1,0 +1,14 @@
+@import "./variables.scss";
+
+.container{
+    background-color: $white !important;
+    margin: 1.3rem 0px ;
+}
+.productButton{
+    background-color: lighten($black, 10) !important;
+    padding: 12px !important;
+    color: $white !important;
+    margin:15px !important;
+    border-radius: 0px !important;
+    width: 100px;
+}

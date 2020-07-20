@@ -22,9 +22,10 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Link from 'next/link'
-import gql from 'graphql-tag';
+
 import Snackbar from '@material-ui/core/Snackbar';
 import { useRouter } from 'next/router'
+import { NextSeo } from 'next-seo';
 
 import style from '../Component/css/Login.module.scss'
 
@@ -63,6 +64,9 @@ export default function Login(props) {
                             setAuthToken(()=>{  
                                 return {data} 
                              })
+                             localStorage.setItem("authToken", data.login.authToken);
+                             localStorage.setItem("userId", data.login.user.userId);
+                             localStorage.setItem("displayName",data.login.user.username);
                         }
                     ).catch((error) => {
                         setAuthToken(()=>{  
@@ -75,9 +79,6 @@ export default function Login(props) {
                      })
 
                      if(!data==="undefined"){
-                        localStorage.setItem("authToken", data.login.authToken);
-                        localStorage.setItem("userId", data.login.user.userId);
-                        localStorage.setItem("displayName",data.login.user.username);
                         router.push("/")
         
                     }
@@ -102,6 +103,10 @@ export default function Login(props) {
             
     return (
         <>
+         <NextSeo
+            title="Login -- Welcome Back "
+            description="Login  page "
+    />
             <Container className={style.containerBox}>
                 <Card className={style.root} >
                     <div className={style.innerCard}>
@@ -113,10 +118,9 @@ export default function Login(props) {
                                 <Typography className={style.typeH3} component="h3" variant="h2">
                                     Join With Me
                                 </Typography>
-                                <form onSubmit={formSubmit} className={style.form} noValidate autoComplete="off">
+                                <form onSubmit={formSubmit} className={style.form} noValidate autoComplete="on">
                                    <>
-                                    <TextField onChange={userNameChange} id="userField" className={style.textControl} placeholder='Enter Your Email Or User Name   ' label=" Email Or User Name " />
-                                
+                                    <TextField onChange={userNameChange}  autoComplete="username" id="userField" className={style.textControl} placeholder='Enter Your Email Or User Name   ' label=" Email Or User Name " />
                                     <FormControl className={style.textControl} >
                                         <InputLabel htmlFor="LoginPassword">Password</InputLabel>
                                         <Input
@@ -125,6 +129,8 @@ export default function Login(props) {
                                             value={passward}
                                             onChange={passwardChange}
                                             placeholder='Enter your Passward'
+                                            name="password" 
+                                            autoComplete="current-password"
                                             endAdornment={
                                                 <InputAdornment position="end">
                                                     <IconButton
@@ -155,6 +161,14 @@ export default function Login(props) {
                                 </Typography>
                                 <Link  href='/signup'>  
                                        <a> Click Here </a>
+                                </Link>
+                            </div>    
+                            <div className={style.typeLogin}> 
+                                <Typography className={style.anchorLink}  component="h6" variant="h6">
+                                       Forget Passward    
+                                </Typography>
+                                <Link  href='/ForgetPassward'>  
+                                       <a> Click   </a>
                                 </Link>
                             </div>    
 

@@ -1,8 +1,15 @@
 import gql from 'graphql-tag';
 
 export  const POST_QUERY = gql`query postData {
+  generalSettings {
+    url
+    description
+    timezone
+    title
+  }
+
   __typename
-  posts {
+  posts{
   edges{
     node {
       id
@@ -31,8 +38,11 @@ export const POST_READ = gql`query GET_POST($id: ID!) {
        commentCount
        title
        content
+       dateGmt
+       modifiedGmt
        slug
        date
+       excerpt
        commentStatus
        featuredImage {
          altText
@@ -169,6 +179,18 @@ fragment CommentFields on Comment {
   }
 }`
 
+export const PAGE_QUERY = gql`query GET_PAGE($id: ID!) {       
+  page(id: $id) {
+      content
+      title
+      featuredImage {
+        altText
+        sourceUrl(size: LARGE)
+        id
+      }
+    }
+  
+ }`
 
 
 
@@ -232,3 +254,14 @@ export const LOGIN_MUTATION =`mutation LoginUser($username : String!, $password 
     }
   }
 }`
+
+
+
+export const FORGET_PASSWARD_MUTATION =`
+mutation MyMutation($getUserName:String!) {
+  __typename
+  sendPasswordResetEmail(input: {clientMutationId: "sendPassward", username: $getUserName}) {
+    clientMutationId
+  }
+}
+`

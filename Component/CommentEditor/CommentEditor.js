@@ -1,14 +1,13 @@
-import React from 'react'
+import React,{Fragment} from 'react'
 import ReactMde from "react-mde";
 import * as Showdown from "showdown";
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 
 import Button from '@material-ui/core/Button';
-import style from '../css/Comments.module.scss'
+import style from '../css/CommentEditor.module.scss'
 import { request } from 'graphql-request';
 import {COMMENT_MUTATION} from "../graphalQurey"
-import useSWR from 'swr'
 
 
 const signUP = (input) => {
@@ -23,7 +22,7 @@ function Alert(props) {
 }
 
  export default  function CommentEditor(props) {
-  const [value, setValue] = React.useState();
+  const [value, setValue] = React.useState("");
     const [selectedTab, setSelectedTab] = React.useState("write");    
     const [open, setOpen] = React.useState(false);
     const [comment, setComment] = React.useState({});
@@ -43,70 +42,74 @@ function Alert(props) {
         e.preventDefault();           
           const UserId= localStorage.getItem("userId")
           const DisplayName= localStorage.getItem("displayName");
-          
-          await signUP( {
-            "input":{
-                    "content": value,
-                    "author": DisplayName, 
-                    "userId":UserId,
-                    "clientMutationId": "createComment",
-                    "commentOn": props.postid
-            }
-          }  
-        ).then(
-          (data)=>{
-            setComment( ()=>{ return {data} })
-          }
-        ).catch((error)=> setComment(()=> { return {error}}))
-        setOpen(()=> true );
 
+          console.log(UserId && DisplayName && value  )
+          console.log(value !== null || value !== '' )
+          console.log(value.length==20 || UserId || DisplayName)
+
+      
+          
+          if(value.length==20 ) {
+              await signUP( {
+                "input":{
+                        "content": value,
+                        "author": DisplayName, 
+                        "userId":UserId,
+                        "clientMutationId": "createComment",
+                        "commentOn": props.postid
+                }
+              }  
+            ).then(
+              (data)=>{
+                setComment( ()=>{ return {data} })
+              }
+            ).catch((error)=> setComment(()=> { return {error}}))
+            setOpen(()=> true );
+            }
 
         }
-      
+    const  onChangeHandler = (data)=>{
+      setValue(data)
+      }
      const handleClose = () => {      
          setOpen(false);
       };
       console.log(comment, ' comment ');
 
       const ShowAlertError= (comment.error)? comment.error.response.errors[0].message:'submit'
-
+      
     return (
-      <div key={props.keyId} className="container"> 
-
-        <form onSubmit={submitComment} > 
-          <ReactMde
-            value={value}
-            onChange={setValue}
-            selectedTab={selectedTab}
-            onTabChange={setSelectedTab}
-            generateMarkdownPreview={markdown =>
-              Promise.resolve(converter.makeHtml(markdown))
-            }
-            childProps={{
-              writeButton: {
-                tabIndex: -1
-              }
-            }}
-          />
-            <Button type="submit" className={style.productButton} size="small">
-                            Submit  
-            </Button>
-        </form>
-
+        <Fragment key={props.keyId}> 
       
-        
-      
-       <Snackbar open={open} anchorOrigin={ 
-                {    vertical: 'top', 
-                    horizontal: 'center' }
-                } 
-                autoHideDuration={6000} onClose={handleClose}>
-                   <Alert onClose={handleClose} show={ShowAlertError} severity= {(comment.error)? "error":'success'} ></Alert>
-       </Snackbar> 
-        
-        
-
        
-      </div>
+          <form  id='formSubmit' onSubmit={submitComment} > 
+            <ReactMde
+                  value={value}
+                  onChange={onChangeHandler}
+                  selectedTab={selectedTab}
+                  onTabChange={setSelectedTab}
+                  generateMarkdownPreview={markdown =>
+                    Promise.resolve(converter.makeHtml(markdown))
+                  }
+                  childProps={{
+                    writeButton: {
+                      tabIndex: -1
+                    }
+                  }}
+                />
+              
+              <Button type="submit" className={style.productButton} size="small">
+                              Submit  
+              </Button>
+            
+          </form>      
+          <Snackbar open={open} anchorOrigin={ 
+                    {    vertical: 'top', 
+                        horizontal: 'center' }
+                    } 
+                    autoHideDuration={6000} onClose={handleClose}>
+                      <Alert onClose={handleClose} show={ShowAlertError} severity= {(comment.error)? "error":'Your Comment Under Review'} ></Alert>
+          </Snackbar> 
+        </Fragment>
     );
   }

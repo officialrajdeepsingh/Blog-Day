@@ -113,13 +113,14 @@ export default function Header(props) {
 
                     <ul className={style.nav}>          
                         {
+                            
                             (data)? data.menu.menuItems.nodes.map(
                                 menu=>{
                                     const slug=menu.connectedObject.slug
                                     const id =menu.connectedObject.id
                                     return (
                                         <li key={menu.id} className={style.navItem}>
-                                            <Link  href={(slug && id )?`/page/${slug}-${id}` :"/" }>
+                                            <Link  href={`/Page/${slug}-${id}`}>
                                                 <a title={(menu.connectedObject.title)?menu.connectedObject.title : data.label }>{menu.label}</a>
                                             </Link>
                                         </li>      

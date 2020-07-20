@@ -46,6 +46,7 @@ export default class MainSection extends Component {
     render() {
         const {post}=this.props;     
         const {node}=post  
+        console.log(node, ' main section ')
              
         return (
                      
@@ -71,7 +72,7 @@ export default class MainSection extends Component {
                                     </Typography>
                                 </CardContent>
                                 <CardActions className={style.cardAction}>
-                                    <Link  href={`/[read]?slug=${node.id}-${node.slug}-${node.id}`} as={ `${node.slug}-${node.id}`}>
+                                    <Link    href={`/Blog/?slug=${node.id}-${node.slug}-${node.id}`} as={ `/Blog/${node.slug}-${node.id}`}>
                                        <a className={`MuiButtonBase-root MuiButton-root MuiButton-text  MuiButton-textSizeSmall MuiButton-sizeSmall ${style.productButton}`}> Read More </a> 
                                     </Link>
                                     

@@ -8,10 +8,8 @@ export default class CommentsCard extends Component {
     render() {
         const {data , reply  } = this.props
         return (
-             <Card   className={ (reply)? style.cardCommentsReplyBox : style.cardCommentsBox }>
-                                 
+             <Card  className={ (reply)? style.cardCommentsReplyBox : style.cardCommentsBox }>
                                  <div dangerouslySetInnerHTML={{ __html: data.content }}></div>                 
-                                 
                                   <div className={style.cardCommentBox}> 
                                      <Typography>
                                          By {data.author.name}

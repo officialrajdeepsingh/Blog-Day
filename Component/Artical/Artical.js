@@ -28,7 +28,7 @@ export default class Artical extends Component {
     return(
               <Grid key={node.id} item sm={6} md={6} lg={6} xs={12}>
                 <Card className={style.card}>
-                <Link href={`/[read]?slug=${node.id}`} as={ `${node.slug}-${node.id}`}>
+                <Link   href={`/Blog/?slug=${node.id}`} as={ `/Blog/${node.slug}-${node.id}`}>
                     <CardActionArea>
                             <CardMedia
                                 className={style.image}
@@ -39,7 +39,7 @@ export default class Artical extends Component {
                             />
                             <CardContent>
                                 <Typography gutterBottom variant="h5" component="h2">       
-                                    <Link href={`/[read]?slug=${node.id}`} as={ `${node.slug}-${node.id}`}>
+                                    <Link href={`/Blog/?slug=${node.id}`} as={ `/Blog/${node.slug}-${node.id}`}>
                                       <a  title={node.slug} dangerouslySetInnerHTML={{ __html: node.title }} ></a> 
                                     </Link>
                                 </Typography>

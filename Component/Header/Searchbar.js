@@ -27,10 +27,10 @@ const fetcher = (query, search) => request('https://www.rajdeepsingh.dev/graphql
 
 
 export default function Searchbar(props) {
-
     const [search ,setSearch]=useState('')
-    const { data, error } = useSWR([POST_SEARCH, search] , fetcher)
-   
+
+    const { data, error } = useSWR( (search)?   [POST_SEARCH, search] : null, fetcher)
+
     const sumbitHandler = (e)=>{
         e.preventDefault();
      }
@@ -40,6 +40,7 @@ export default function Searchbar(props) {
      }
      console.log(data, ' data search')
      console.log(error, ' error search')
+     console.log(search, ' search search')
 
      return (
         <div className={style.bar}> 

@@ -1,0 +1,23 @@
+@import "./variables.scss";
+
+.form{
+   
+    margin:60px auto;
+    padding: 20px;
+    background-color: $white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.layout{
+  color:black;
+  width: 400px;
+  margin:30px auto !important;
+}
+
+.button{
+    width: 300px;
+    margin:10px auto !important;
+}

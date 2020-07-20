@@ -69,21 +69,19 @@
 
 
 .innerHtmlFor{
-    margin:10px auto;
+    margin:35px auto;
+    padding:10px ;
     overflow-x: hidden;
     box-sizing: border-box;
 
     iframe{
-        position: relative !important;
-        width:100%;
+      position: relative !important; 
+      clip: none;
     }
 
 
     p{
-        margin: 10px 20px !important;
-        color: $black !important;
-        font-size: 1.3rem;
-        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+        margin: 10px auto !important;
         font-weight: 500 !important;
         line-height: 1.6;
         letter-spacing: 0.009em;
@@ -91,33 +89,29 @@
     }
 
     h1, h2 , h3 , h4, h5, h6, span{
-        line-height: 1.6;
-        letter-spacing: 0.009em;
-        word-break: break-word;
-        margin: 10px 20px !important;
-        color: $black !important;
+        margin: 10px auto !important;
         padding: 10px 8px !important;
     }
 
-    h3{
-        font-size: 90px !important;
-        font-weight: 700 !important;
-    }
-    h1{
-        font-size: 60px !important;
-        padding: 0px !important;
-        font-weight: 700 !important;
-        line-height: 1;
-        margin: 20px 20px !important;
-    }
-    pre {
-        margin: 10px;
-        border: 2px solid;
-        padding: 25px;
-        background-color: #000000cf;
-        color: white;
-        line-height: 2.3;
-    }
+    a{
+        border-bottom:1px solid $black;
+        text-transform: capitalize;
+        font-size:20px !important;
+    } 
+    pre{
+      
+        font-size: 15px;
+        color: $white;
+        background: lighten($black, $amount: 10);
+        padding: .9em 1.2em;
+        border: none; 
+        border-radius: 10px;
+        margin:0px auto 25px auto;
+        overflow-x:auto ;
+
+    }  
+
+   
 }
 
 @media (max-width: 450px) {
@@ -132,8 +126,4 @@
     .cardArticalImage{
         height:300px !important;
     }
-
-    
-
-
 }

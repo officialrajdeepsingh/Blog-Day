@@ -18,33 +18,43 @@ var corsOptions = {
 		
 		server.use(cors(corsOptions))
 		
-		server.get( '/read/:slug', ( req, res ) => {
+		server.get( '/', ( req, res ) => {
+			app.render( req, res, '/Index' );
+		} );
+		server.get( '/Blog/read/:slug', ( req, res ) => {
 			const postId =  req.params.slug.split( '-' ).pop() 
 			const queryParams = { id: postId };
 			console.log(queryParams, ' queryParams form server side  ')
-			app.render( req, res, '/read', queryParams );
+			app.render( req, res, '/Blog/read', queryParams );
 		} );
 
-		server.get( '/comment/comment/:slug', ( req, res ) => {
+		server.get( '/Comment/comment/:slug', ( req, res ) => {
 			const postId =  req.params.slug.split( '-' ).pop()
 			const queryParams = { id: postId };
-			app.render( req, res, '/comment', queryParams );
+			app.render( req, res, '/Comment/comment', queryParams );
 		} );
-		server.get( '/page/page/:slug', ( req, res ) => {
+		server.get( '/Page/page/:slug', ( req, res ) => {
 			console.log(req.params , ' for server here  ')
 			const postId = req.params.slug.split( '-' ).pop() 
 			const queryParams = { id: postId };
-			console.log(queryParams , ' queryParams server here side  ')
-
-			app.render( req, res, '/page', queryParams );
+		
+			app.render( req, res, '/Page/page', queryParams );
 		} );
 		
-		// server.post( '/signup',cors(corsOptions), ( req, res ) => {
-		// 	const update= res.json()
-		// 	return handle( req, update, '/signup' );
-		// } );
+		server.post( '/signup', ( req, res ) => {
+		
+			return handle( req , es,'/signup' );
+		} );
+		server.post( '/login', ( req, res ) => {
+		
+			return handle( req ,res, '/login' );
+		} );
+		server.post( '/forgetpassward', ( req, res ) => {
+		
+			return handle( req ,res, '/forgetpassward' );
+		} );
 
-		server.get( '*',cors(corsOptions), ( req, res ) => {
+		server.get( '*', ( req, res ) => {
 			return handle( req, res );
 		} );
 
@@ -52,8 +62,10 @@ var corsOptions = {
 			if ( err ) {
 				throw err;
 			}
+			
 			console.warn( `Ready on http://localhost:${port}` );
+		
 		} );
 	} );
 
-
+// 4792

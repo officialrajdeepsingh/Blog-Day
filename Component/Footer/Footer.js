@@ -49,7 +49,7 @@ export default function Footer(props) {
                                     const id =menu.connectedObject.id
                                     return (
                                         <li key={menu.id} className={style.navItem}>
-                                            <Link  href={(slug && id )?`/page/${slug}-${id}` :"/" }>
+                                            <Link  href={(slug && id )?`/Page/${slug}-${id}` :"/" }>
                                                 <a title={(menu.connectedObject.title)?menu.connectedObject.title : data.label }>{menu.label}</a>
                                             </Link>
                                         </li>      

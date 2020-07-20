@@ -7,11 +7,12 @@
 }
 .cardInner{
     background-color: $white;
-    padding:5px !important;
-    margin:5px 0px !important;
+    padding: 15px !important;
+    margin: 50px 0px !important;
 }
 .heading{
     text-align:center;
+    margin-top: 10px !important;
 }
 
 .cardBox{
@@ -21,9 +22,10 @@
     border:none !important;
     border-radius:0px !important ;
     justify-items: center;
-    padding: 10px !important;
+    padding: 15px !important;
     width:max-content !important;
-    margin:25px;
+    margin: 60px 30px;
+
 }
 .imageSize{
     width:50px !important;
@@ -40,14 +42,7 @@
 .textControl{
     padding:20px !important;
 }
-.productButton{
-    background-color: lighten($black, 10) !important;
-    padding: 12px !important;
-    color: $white !important;
-    margin:15px !important;
-    border-radius: 0px !important;
-    width: 100px;
-}
+
 .textFields{
     margin:15px auto !important;
         
@@ -73,16 +68,16 @@
         }
 }
 .cardCommentsReplyBox{
-    margin: 40px auto !important;
-    padding: 22px !important;
-    width: 70% !important;
+    margin: 60px auto !important;
+    padding: 25px !important;
+    width: 65% !important;
     box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.12) !important;
     border: none !important;
-    border-radius: 10px !important;
+    border-radius: 1px !important;
 }
 .cardCommentsBox{
-    margin: 40px auto !important;
-    padding: 20px !important;
+    margin: 50px auto !important;
+    padding: 25px !important;
     width: 80% !important;
     box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.12) !important;
     border: none !important;
@@ -100,18 +95,21 @@
     margin: 15px auto;
 }
 
-.editorStyle{
-    background-color: $white !important;
-    margin: 1.3rem 0px ;
-}
+
 
 .commentLogin{
-    background-color:lighten($black, 30);
+    background-color:lighten($black, 93);
     width:100%;
-    height: 100px ;
+    height: 300px ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
    
     a {
-        color:$white
+        color:$white;
+        padding: 10px 15px;
+        background-color: $black;
+        border: 1px solid $white
     }
 }
  @media  (max-width: 450px) {

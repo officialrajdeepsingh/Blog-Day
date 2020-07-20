@@ -1,0 +1,37 @@
+@import "./variables.scss";
+
+.page{
+    margin:50px auto;
+    background-color:$white;
+    padding: 25px;
+}
+
+.pageHeading{
+    color:$black
+}
+.pageStyle{
+    margin:35px auto;
+    padding:10px ;
+    overflow-x: hidden;
+    box-sizing: border-box;
+
+    p{
+        margin: 10px auto !important;
+        font-weight: 500 !important;
+        line-height: 1.6;
+        letter-spacing: 0.009em;
+        word-break: break-word;
+    }
+
+    h1, h2 , h3 , h4, h5, h6, span{
+        margin: 10px auto !important;
+        padding: 10px 8px !important;
+    }
+
+    a{
+        border-bottom:1px solid $black;
+        text-transform: capitalize;
+        font-size:20px !important;
+    } 
+
+}
