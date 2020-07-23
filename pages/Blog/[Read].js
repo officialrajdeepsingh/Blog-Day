@@ -25,9 +25,7 @@ import Head from 'next/head'
 
 export default function Read(props) {
   const { getData,concerter }=props
-console.log( getData , ' getData ')
-console.log( props , ' props ')
-console.log( concerter , ' concerter ')
+
  
   if (concerter) {
     return   <ErrorComponent concerter={concerter}/>
@@ -66,14 +64,13 @@ console.log( concerter , ' concerter ')
                     {
                       post.categories.edges.map(
                         (postCat)=>{ 
-                          console.log(postCat , ' post Categories ')
                           return  <Typography key={postCat.id} component="h6" variant="h6">
                         # {postCat.node.name} 
                         </Typography>}
                       )
                     }
                     
-                    <Typography component="h1" variant="h1" dangerouslySetInnerHTML={{ __html: post.title }}>
+                    <Typography component="h1" variant="h1" className={style.readHeadh1} dangerouslySetInnerHTML={{ __html: post.title }}>
                     </Typography>           
                     <div className={style.cardBox}>
                         <Avatar alt={post.author.name} src={post.author.avatar.url}  className={style.imageSize} />
@@ -97,7 +94,7 @@ console.log( concerter , ' concerter ')
             <div className={style.writeComment}>
             {
               (post.commentStatus)?
-                  <Link href={`/comments/?id=${post.id}`} as={ `/Comment/${post.slug}-${post.id}`}> 
+                  <Link href={`/Comment/?slug=${post.slug}-${post.id}`} as={ `/Comment/${post.slug}-${post.id}`}> 
                   <a> { post.commentCount? post.commentCount : 0} Comment Now </a> 
                 </Link> :
               <Link> 
@@ -133,13 +130,11 @@ console.log( concerter , ' concerter ')
 export const  getServerSideProps =  async ({  query, asPath }) =>{               
   const id = query.Read.split( '-' ).pop() ; 
 
-  console.log(id , ' newId ')
        try{       
         const getData= await client.query(({
           query:POST_READ,
           variables:{id}
       }))
-      console.log(getData , ' 3 inside ssr')
       return {
               props: { 
                         getData

@@ -9,23 +9,30 @@ var cors = require('cors')
 var corsOptions = {
 	origin: 'https://www.rajdeepsingh.dev/graphql',
 	optionsSuccessStatus: 200 
-	// some legacy browsers (IE11, various SmartTVs) choke on 204
 }
+
+const sitemapOptions = {
+    root: __dirname + '/static/sitemap/',
+    headers: {
+        'Content-Type': 'text/xml;charset=UTF-8'
+    }
+};
+
 
 	app.prepare()
 	.then( () => {
 		const server = express();
 		
 		server.use(cors(corsOptions))
-		
+		server.get('/sitemap.xml', (req, res) => res.status(200).sendFile('sitemap.xml', sitemapOptions));
+
 		server.get( '/', ( req, res ) => {
 			app.render( req, res, '/Index' );
 		} );
 		server.get( '/Blog/read/:slug', ( req, res ) => {
 			const postId =  req.params.slug.split( '-' ).pop() 
 			const queryParams = { id: postId };
-			console.log(queryParams, ' queryParams form server side  ')
-			app.render( req, res, '/Blog/read', queryParams );
+		    app.render( req, res, '/Blog/read', queryParams );
 		} );
 
 		server.get( '/Comment/comment/:slug', ( req, res ) => {
@@ -34,7 +41,6 @@ var corsOptions = {
 			app.render( req, res, '/Comment/comment', queryParams );
 		} );
 		server.get( '/Page/page/:slug', ( req, res ) => {
-			console.log(req.params , ' for server here  ')
 			const postId = req.params.slug.split( '-' ).pop() 
 			const queryParams = { id: postId };
 		
@@ -68,4 +74,4 @@ var corsOptions = {
 		} );
 	} );
 
-// 4792
+

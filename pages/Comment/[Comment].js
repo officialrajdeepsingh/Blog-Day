@@ -24,10 +24,6 @@ import CommentEditor from '../../Component/CommentEditor/CommentEditor'
 export default function Comment({concerter, getData}) {
 
 
-   
-
-    // console.log(props , ' inside Comments ')
-  
 
   if (concerter) {
       return <ErrorComponent concerter={concerter}/>
@@ -37,7 +33,6 @@ export default function Comment({concerter, getData}) {
     const { data } =  getData
     const { post } = data
 
-      console.log(post)
       let UserId;
       let DisplayName;
 
@@ -60,10 +55,10 @@ export default function Comment({concerter, getData}) {
                 </Typography>
                 <Card className={style.cardBox}>
                 <Avatar alt={post.featuredImage.altText} src={post.featuredImage.sourceUrl} className={style.imageSize} />
-                <Link href={`/[read]?id=${post.id}`} as={ `${post.slug}-${post.id}`}>
-                    <a dangerouslySetInnerHTML={{ __html: post.title }} target="_blank" className={style.cardBoxTitle}>
-                    </a>
-                </Link>
+                  <Link href={`/Blog/?slug=${post.id}`} as={ `/Blog/${post.slug}-${post.id}`}>
+                      <a dangerouslySetInnerHTML={{ __html: post.title }} target="_blank" className={style.cardBoxTitle}>
+                      </a>
+                  </Link>
                 </Card>
             </div>
           

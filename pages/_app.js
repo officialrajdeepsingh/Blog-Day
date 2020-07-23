@@ -11,23 +11,40 @@ import { ApolloProvider } from "@apollo/react-hooks";
 // Layout Component
 import Layout from '../Component/Layout'
 
-export default function MyApp({Component, pageProps }) {
+
+import Router from "next/router";
+import withGA from "next-ga";
+
+import { SocialProfileJsonLd } from 'next-seo';
+
+function MyApp({Component, pageProps }) {
 
  return (
+   <>
+   <SocialProfileJsonLd
+     type="Person"
+     name="Rajdeep Singh"
+     url="https://www.rajdeepsingh.dev/"
+      sameAs={[
+        'https://twitter.com/Official_R_deep',
+        'https://www.facebook.com/officialrajdeepsingh/',
+        'https://www.instagram.com/officialrajdeepsinghs/',
+      ]}
+    />
+
    <ApolloProvider client={client}> 
      <Layout>
           <Component {...pageProps} />
      </Layout>
    </ApolloProvider>
-
+    </>
   )
 }
 
+// metric
 // export function reportWebVitals(metric) {
-//   console.log(metric , ' out metric') // The metric object ({ id, name, startTime, value, label }) is logged to the console
-//   if (metric.label === 'custom') {
-//     console.log(metric , 'inside metric') // The metric object ({ id, name, startTime, value, label }) is logged to the console
-//   }
+//    if (metric.label === 'custom') {
+//  }
 // }
 
-
+export default withGA("UA-173126339-1", Router)(MyApp);

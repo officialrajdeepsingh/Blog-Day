@@ -14,8 +14,7 @@ import style from '../css/Menu.module.scss';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 
-// import Link from 'next/link';
-import Link from '@material-ui/core/Link';
+import Link from 'next/link';
 
 
 
@@ -41,6 +40,11 @@ const TriggerMenu = (props) => {
 
     setOpen(false);
   };
+
+  const passHref =(event)=>{
+  
+    window.open("https://docs.google.com/forms/d/e/1FAIpQLSdtJKTuJ3t_mjbkm0VKBFKyvLe_Kvho5oeKyLI0DT9_ujRPxA/viewform?usp=sf_link"  , "_blank")
+  }
   
   return (
     <div>
@@ -61,6 +65,7 @@ const TriggerMenu = (props) => {
                 </filter>
                 </defs>                         
             </SvgIcon>
+
       </Button>
       <Menu
           {...bindMenu(popupState)}
@@ -70,20 +75,19 @@ const TriggerMenu = (props) => {
           className={style.menu}
       >
         <MenuItem onClick={()=>handleClick(popupState)} > 
-         
-            Share
+            <a className={style.anchorLink}> Share </a>
         </MenuItem>
          
        
         <MenuItem >   
-          <Link className={style.anchorLink} href={`/comment?id=${props.postId}`} as='/comment'>
-            Write Comment 
+          <Link  href={`/Comment/?slug=${props.slug}-${props.postId}`} as={ `/Comment/${props.slug}-${props.postId}`}>
+           <a className={style.anchorLink} target="_blank">  Write Comment</a>
           </Link>  
         </MenuItem>
         
         <MenuItem >  
-          <Link rel="noreferrer" target="_blank" className={style.anchorLink} href="https://docs.google.com/forms/d/e/1FAIpQLSdtJKTuJ3t_mjbkm0VKBFKyvLe_Kvho5oeKyLI0DT9_ujRPxA/viewform?usp=sf_link" > 
-             Report 
+          <Link  href="#"   > 
+             <a className={style.anchorLink} rel="noreferrer" onClick={passHref} target="_blank"> Report </a> 
           </Link> 
         </MenuItem>
      

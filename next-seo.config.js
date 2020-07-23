@@ -11,3 +11,15 @@ export default {
       cardType: 'summary_large_image',
     },
   };
+
+  export const Personal={
+  type="Person",
+  name="Rajdeep Singh",
+  url="https://www.rajdeepsingh.dev/",
+  sameAs={[
+    'http://www.facebook.com/your-profile',
+    'http://instagram.com/yourProfile',
+    'http://www.linkedin.com/in/yourprofile',
+    'http://plus.google.com/your_profile',
+  ]}
+}

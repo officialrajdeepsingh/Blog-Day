@@ -32,8 +32,12 @@
 .navItem{
     margin:0px 7px;
     a{
-        font-size:18px;
-        font-weight: 500;
+        font-size:22px !important;
+
+        &:hover{
+            font-weight: bold !important;
+            color:grey;
+        }
     }
 }
 

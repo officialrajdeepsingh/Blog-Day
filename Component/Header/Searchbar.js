@@ -38,10 +38,7 @@ export default function Searchbar(props) {
      const  changeHandler = (e)=>{
         setSearch(e.target.value)
      }
-     console.log(data, ' data search')
-     console.log(error, ' error search')
-     console.log(search, ' search search')
-
+   
      return (
         <div className={style.bar}> 
            <Container className={style.box} maxWidth="sm" >

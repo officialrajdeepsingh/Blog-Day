@@ -9,11 +9,7 @@
     "static/development/_ssgManifest.js"
   ],
   "pages": {
-    "/Blog/[Read]": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
-    ],
-    "/ForgetPassward": [
+    "/Comment/[Comment]": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],

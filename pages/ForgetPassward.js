@@ -4,7 +4,7 @@ import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import Button from '@material-ui/core/Button';
 import style from '../Component/css/ForgetPassward.module.scss'
-
+import Typography from '@material-ui/core/Typography';
 import Snackbar from '@material-ui/core/Snackbar';
 import {FORGET_PASSWARD_MUTATION} from "../Component/graphalQurey"
 import { request } from 'graphql-request';
@@ -50,8 +50,7 @@ export default function ForgetPassward(props) {
          })
         
     }
-    console.log(data , ' data ')
-    console.log(error , ' error ')
+   
     const passwardChange=(event)=>{
         setGmail(event.target.value)
     }
@@ -65,7 +64,12 @@ export default function ForgetPassward(props) {
 
     return (
         <>
+
          <form onSubmit={formSubmit} className={style.form} noValidate autoComplete="on">
+             
+            <Typography className={style.heaDing} component="h6" variant="h6">
+                Forget Your Passward
+            </Typography>
              <FormControl className={style.layout} >
                                         <InputLabel htmlFor="RestPassword">Enter Register Gmail</InputLabel>
                                         <Input
@@ -86,8 +90,9 @@ export default function ForgetPassward(props) {
         </form>
 
         <Snackbar open={open} anchorOrigin={ 
-                    {    vertical: 'top', 
-                        horizontal: 'center' }
+                        {    vertical: 'top', 
+                           horizontal: 'center'
+                        }
                     } 
                  autoHideDuration={60000} onClose={handleClose}>
                   <Alert onClose={handleClose}  show={ showError } severity={error.error? "error":"success"}></Alert>
@@ -95,3 +100,4 @@ export default function ForgetPassward(props) {
         </>
     )
 }
+

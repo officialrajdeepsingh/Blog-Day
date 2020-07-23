@@ -16,7 +16,6 @@ export default class ReadCard extends Component {
     render() {
         const { post}=this.props
 
-        console.log(post , ' inside read card')
         return (
             <>
            

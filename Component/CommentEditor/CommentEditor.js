@@ -26,9 +26,7 @@ function Alert(props) {
     const [selectedTab, setSelectedTab] = React.useState("write");    
     const [open, setOpen] = React.useState(false);
     const [comment, setComment] = React.useState({});
-    const [getDisplayName, setGetDisplayName] = React.useState({});
-    const [getUserId, setgetUserId] = React.useState({});
-
+   
     const converter = new Showdown.Converter({
       tables: true,
       simplifiedAutoLink: true,
@@ -42,15 +40,10 @@ function Alert(props) {
         e.preventDefault();           
           const UserId= localStorage.getItem("userId")
           const DisplayName= localStorage.getItem("displayName");
-
-          console.log(UserId && DisplayName && value  )
-          console.log(value !== null || value !== '' )
-          console.log(value.length==20 || UserId || DisplayName)
-
-      
-          
-          if(value.length==20 ) {
-              await signUP( {
+    
+        
+          if(value) {
+             const data= await signUP( {
                 "input":{
                         "content": value,
                         "author": DisplayName, 
@@ -60,23 +53,24 @@ function Alert(props) {
                 }
               }  
             ).then(
-              (data)=>{
+                (data)=>{
                 setComment( ()=>{ return {data} })
               }
             ).catch((error)=> setComment(()=> { return {error}}))
+            
             setOpen(()=> true );
-            }
 
+            }
         }
-    const  onChangeHandler = (data)=>{
-      setValue(data)
+
+      const  onChangeHandler = (data)=>{
+         setValue(data)
       }
-     const handleClose = () => {      
+      const handleClose = () => {      
          setOpen(false);
       };
-      console.log(comment, ' comment ');
-
-      const ShowAlertError= (comment.error)? comment.error.response.errors[0].message:'submit'
+     
+      const ShowAlertError= (comment.error)? comment.error.response.errors[0].message:'Your Comment Submit Now Your Comment Under Review'
       
     return (
         <Fragment key={props.keyId}> 
@@ -104,11 +98,13 @@ function Alert(props) {
             
           </form>      
           <Snackbar open={open} anchorOrigin={ 
-                    {    vertical: 'top', 
-                        horizontal: 'center' }
+                       { 
+                          vertical: 'top', 
+                          horizontal: 'center'
+                       }
                     } 
                     autoHideDuration={6000} onClose={handleClose}>
-                      <Alert onClose={handleClose} show={ShowAlertError} severity= {(comment.error)? "error":'Your Comment Under Review'} ></Alert>
+                      <Alert onClose={handleClose} show={ShowAlertError} severity= {(comment.error)? "error":'Success'} ></Alert>
           </Snackbar> 
         </Fragment>
     );

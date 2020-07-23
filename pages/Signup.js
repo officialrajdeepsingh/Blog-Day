@@ -108,6 +108,10 @@ export default function Signup(props) {
                 setGetSubmitData(()=>{  
                             return {data} 
                          })
+                         localStorage.setItem("authToken", data.registerUser.user.jwtAuthToken);
+                         localStorage.setItem("userId", data.registerUser.user.userId);
+                         localStorage.setItem("displayName",data.registerUser.user.username);
+                    
             }).catch((error) => {
                 setGetSubmitData(()=>{  
                     return {error} 
@@ -244,7 +248,7 @@ export default function Signup(props) {
                                         <Typography className={style.anchorLink}  component="h6" variant="h6">
                                                 Login With Me 
                                         </Typography>
-                                        <Link  href="/login">
+                                        <Link  href="/Login">
                                              <a> Click Here  </a> 
                                         </Link>
                                     </>

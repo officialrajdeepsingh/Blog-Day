@@ -1,5 +1,44 @@
 @import "./variables.scss";
+// @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Montserrat&family=Oxygen:wght@300&display=swap');
 
+@font-face {
+   font-family: 'Cormorant Garamond';
+   src: url('../fonts/Cormorant_Garamond/CormorantGaramond-Light.ttf');
+   src: url('../fonts/Cormorant_Garamond/CormorantGaramond-Medium.ttf');
+   src: url('../fonts/Cormorant_Garamond/CormorantGaramond-Regular.ttf');
+}
+
+@font-face {
+   font-family: 'Montserrat';
+
+   src: url('../fonts/Montserrat/Montserrat-Regular.ttf');
+   src: url('../fonts/Montserrat/Montserrat-Medium.ttf');
+   src: url('../fonts/Montserrat/Montserrat-Bold.ttf');
+}
+
+@font-face {
+   font-family: 'Oxygen';
+   src: url('../fonts/Oxygen/Oxygen-Light.ttf');
+   src: url('../fonts/Oxygen/Oxygen-Bold.ttf');
+   src: url('../fonts/Oxygen/Oxygen-Regular.ttf');
+}
+
+
+h1{
+   font-family: 'Cormorant Garamond', serif !important;
+}
+
+h4{
+   font-family: 'Cormorant Garamond', serif !important;
+}
+
+h2{
+   font-family: 'Montserrat', sans-serif !important;
+}
+
+p{ 
+   font-family: 'Oxygen', sans-serif !important;
+}
 
 body{
     margin: 0px;
@@ -14,6 +53,8 @@ a{
     color: $black; 
     text-transform: capitalize;
     font-size:22px !important;
+    font-family: 'Cormorant Garamond', serif !important;
+    font-weight: 700;
 }
 
 ul{

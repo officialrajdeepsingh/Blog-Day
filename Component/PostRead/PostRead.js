@@ -49,7 +49,6 @@ export default function PostRead(props) {
     if (loading) return <p>Loading Posts...</p>;
     if (error) return <p>Something wrong happened!</p>;
 
-        console.log(data ,' data')
         return (
             <>
 

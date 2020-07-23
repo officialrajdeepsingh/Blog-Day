@@ -1,13 +1,18 @@
 @import "./variables.scss";
 
 .form{
-   
     margin:60px auto;
     padding: 20px;
     background-color: $white;
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+
+.heaDing{
+     text-align: center;
+     padding: 20px !important;
 }
 
 

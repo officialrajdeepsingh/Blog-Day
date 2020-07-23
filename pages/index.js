@@ -9,7 +9,7 @@ import ErrorBoundaries from "../Component/ErrorBoundaries";
 import { NextSeo } from 'next-seo';
 import RajdeepSingh from '../Component/asset/RajdeepSingh.jpg'
 import ErrorComponent from '../Component/ErrorComponent'
-
+import logo from '../Component/asset/logo.svg'
 
 export default function Index(props) {
  const {getData,concerter} = props
@@ -31,14 +31,10 @@ export default function Index(props) {
             url: 'https://www.rajdeepsingh.dev/',
             title: generalSettings.title,
             description: generalSettings.description,
-            images:[ posts.edges.map(
-                (post)=>{
-                return {
-                      url: post.node.featuredImage.sourceUrl,
-                      alt: post.node.featuredImage.altText,
+            images:[ {
+                      url: logo,
+                      alt: "Rajdeep Singh --Learn With Me",
                     }
-                }
-              )
             ],
             site_name: 'Rajdeep Singh',
           }}
@@ -51,6 +47,7 @@ export default function Index(props) {
                 <link rel='icon' href={RajdeepSingh} type='image/x-icon'/>
                 
           </Head>
+            
                   <Grid component='article' container >
                       {
                         posts.edges.map(

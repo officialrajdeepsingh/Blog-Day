@@ -15,12 +15,6 @@ const fragmentMatcher = new IntrospectionFragmentMatcher({
 
 const cache = new InMemoryCache({ fragmentMatcher });
 
-// const customFetch = (uri, options) => {
-//   const { operationName } = JSON.parse(options.body);
-//   return fetch(`${uri}/graph/graphql?opname=${operationName}`, options);
-// };
-
-// const link = createHttpLink({ fetch: customFetch });
 const link = new HttpLink({
   fetch,
   uri: "https://www.rajdeepsingh.dev/graphql",
