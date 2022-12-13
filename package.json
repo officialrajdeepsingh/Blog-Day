@@ -27,7 +27,7 @@
     "clipboard-copy": "^3.1.0",
     "cors": "^2.8.5",
     "date-fns": "^2.15.0",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "graphql": "^14.7.0",
     "graphql-request": "^2.0.0",
     "graphql-tag": "^2.10.4",
